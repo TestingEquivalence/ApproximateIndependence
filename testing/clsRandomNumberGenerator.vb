@@ -1,4 +1,5 @@
-﻿Public Class clsRandomNumberGenerator
+﻿Imports alglib
+Public Class clsRandomNumberGenerator
     'Inherits System.Random
     Private RndGenState As New hqrndstate() 'random generator state
 

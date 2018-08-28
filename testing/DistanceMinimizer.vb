@@ -1,4 +1,5 @@
-﻿Public MustInherit Class DistanceMinimizer
+﻿
+Public MustInherit Class DistanceMinimizer
     'p is always the probability measure
     'distance to which should be minimized
     MustOverride Function StartValue(p() As Double) As Double()
@@ -90,8 +91,8 @@
         x = StartValue(p)
         Me.p = p
 
-        Dim state As minbleicstate = New XAlglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
-        Dim rep As minbleicreport = New XAlglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
+        Dim state As alglib.minbleicstate = New alglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
+        Dim rep As alglib.minbleicreport = New alglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
 
         '  These variables define stopping conditions for the optimizer.
         '  We use very simple condition - |g|<=epsg
@@ -102,10 +103,10 @@
         Dim diffstep As Double = 0.000001
 
         'run optimisation
-        XAlglib.minbleiccreatef(x, diffstep, state)
-        XAlglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
-        XAlglib.minbleicoptimize(state, AddressOf aim, Nothing, state)
-        XAlglib.minbleicresults(state, x, rep)
+        alglib.minbleiccreatef(x, diffstep, state)
+        alglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
+        alglib.minbleicoptimize(state, AddressOf aim, Nothing, state)
+        alglib.minbleicresults(state, x, rep)
 
         Return ResultValue(x)
     End Function
@@ -127,8 +128,8 @@
         Me.p = p
         Me.bound = bound
 
-        Dim state As minbleicstate = New XAlglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
-        Dim rep As minbleicreport = New XAlglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
+        Dim state As alglib.minbleicstate = New alglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
+        Dim rep As alglib.minbleicreport = New alglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
 
         '  These variables define stopping conditions for the optimizer.
         '  We use very simple condition - |g|<=epsg
@@ -140,15 +141,15 @@
         Dim diffstep As Double = 0.0001
 
         'run optimisation
-        XAlglib.minbleiccreatef(x, diffstep, state)
-        XAlglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
+        alglib.minbleiccreatef(x, diffstep, state)
+        alglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
         Try
-            XAlglib.minbleicoptimize(state, AddressOf quick_aim, Nothing, state)
+            alglib.minbleicoptimize(state, AddressOf quick_aim, Nothing, state)
         Catch
             'forseeing
             Return True
         End Try
-        XAlglib.minbleicresults(state, x, rep)
+        alglib.minbleicresults(state, x, rep)
 
         Dim res As Double() = ResultValue(x)
 
@@ -182,8 +183,8 @@
         x(0) = 1
 
 
-        Dim state As minbleicstate = New XAlglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
-        Dim rep As minbleicreport = New XAlglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
+        Dim state As alglib.minbleicstate = New alglib.minbleicstate() ' initializer can be dropped, but compiler will issue warning
+        Dim rep As alglib.minbleicreport = New alglib.minbleicreport() ' initializer can be dropped, but compiler will issue warning
 
         '  These variables define stopping conditions for the optimizer.
         '  We use very simple condition - |g|<=epsg
@@ -195,10 +196,10 @@
 
 
         'run optimisation
-        XAlglib.minbleiccreatef(x, diffstep, state)
-        XAlglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
-        XAlglib.minbleicoptimize(state, AddressOf aim_lin_est_point, Nothing, Nothing)
-        XAlglib.minbleicresults(state, x, rep)
+        alglib.minbleiccreatef(x, diffstep, state)
+        alglib.minbleicsetcond(state, epsg, epsf, epsx, maxits)
+        alglib.minbleicoptimize(state, AddressOf aim_lin_est_point, Nothing, Nothing)
+        alglib.minbleicresults(state, x, rep)
 
         Dim lc() As Double
         lc = LinComb(Me.lp, Me.lq, x(0))

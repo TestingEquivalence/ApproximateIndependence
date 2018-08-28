@@ -1,4 +1,5 @@
-﻿Module tests
+﻿
+Module tests
 #Region "universal point test"
     Public universalAsymptPointTest As Func(Of TestParameter, Double(), TestResult) =
         Function(prm As TestParameter, rp As Double()) As TestResult
@@ -9,12 +10,12 @@
                 vol = clsMultinomialDistribution.getAsymptoticVolatility(
                     rp, .q.get_pr, .derivative) / Math.Sqrt(.n)
 
-                Dim crit As Double = .eps - invnormaldistribution(1 - .alpha) * vol
+                Dim crit As Double = .eps - alglib.invnormaldistribution(1 - .alpha) * vol
 
                 Dim T As Double
                 T = prm.test_statistic(rp, prm.q.get_pr)
 
-                res.minEps = T + invnormaldistribution(1 - .alpha) * vol
+                res.minEps = T + alglib.invnormaldistribution(1 - .alpha) * vol
                 If T < crit Then
                     res.result = True
                 Else
