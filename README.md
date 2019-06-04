@@ -1,7 +1,11 @@
-# EquivalenceIndependence
+﻿# EquivalenceIndependence
 This package provides two tests to show equivalence of the two way contingency tables to the independence model.
-It is written in VB.NET. The zip file "testing_independence.zip" contains the whole project for
-the Visual Studio 2010. Tree examples are available in the module "StartMod.vb", which can be run immediately.
+The package is based on the article:
+
+Vladimir Ostrovski, “Testing equivalence to families of multinomial distributions with application to the independence model”, 
+Statistics and Probability Letters 139 (2018), 61–66.
+
+The package is written in VB.NET. Tree examples are available in the module "StartMod.vb", which can be run immediately.
 
 The goal is to show that two categorial random variables are approximately independent distributed. 
 The approximate independence can be important for some applications or also greatly simplify calculations. 
@@ -12,7 +16,7 @@ which contains all product measures of the corresponding dimensions.
 Two categorial random variables are considered approximately independent for the tolerance parameter e>0, 
 if the joint probability density p fulfills the following condition: 
 There exists a product measure q in M such that d(p,q)<e. 
-The minimum distance between p and the model M   is defined as the minimum  of d(p,q), where q ranges over M.
+The minimum distance between p and the model M is defined as the minimum  of d(p,q), where q ranges over M.
  
 The equivalence test problem is formally stated by 
 H0={d(p,M) >=e } against H1={d(p,M)<e}, where e>0 is the tolerance parameter.
