@@ -2,7 +2,8 @@
 This package provides two tests to show equivalence of the two way contingency tables to the independence model.
 The package is based on the article:
 
-Vladimir Ostrovski, “Testing equivalence to families of multinomial distributions with application to the independence model”, 
+Vladimir Ostrovski, “Testing equivalence to families of multinomial distributions with application to the independence model
+”, 
 Statistics and Probability Letters 139 (2018), 61–66.
 
 The package is written in VB.NET. Tree examples are available in the module "StartMod.vb", which can be run immediately.
