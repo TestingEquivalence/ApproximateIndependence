@@ -10,8 +10,7 @@ The package is written in VB.NET. Tree examples are available in the module "Sta
 
 The goal is to show that two categorial random variables are approximately independent distributed. 
 The approximate independence can be important for some applications or also greatly simplify calculations. 
-However, the testing of the equivalence is a difficult task.
-
+However, the testing of the equivalence is a difficult task
 Let d denote Euclidean distance and let M be the independence model, 
 which contains all product measures of the corresponding dimensions. 
 Two categorial random variables are considered approximately independent for the tolerance parameter e>0, 
